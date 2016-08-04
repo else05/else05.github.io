@@ -1,0 +1,6 @@
+{
+  "name": "Else05.GitHub.io",
+  "tagline": "Online Resume",
+  "body": "## 项目经验\r\n##### 后台管理系统(内部使用)\r\n软件环境：Linux、MongoDB 、Tomcat \r\n技术实现：Spring-boot、Spring-data 、velocity\r\n项目描述：项目属于公司内部使用的后台管理项目，主要服务于公司自主项目。方便运营对商家、控件和订单等资源的操作和报表统计。\r\n- 项目技术基于J2EE平台，B/S模式开发，使用Spring-boot作为主体框架，Spring-security控制用户操作权限，Mongodb作为数据保存，后端使用Quartz定时进行数据统计，前端使用velocity模板作为视图展示。\r\n\r\n##### 摇奖送礼活动控件\r\n软件环境：Linux、MySql、Tomcat\r\n技术实现：Spring-boot、Spring-data-jpa、Velocity\r\n项目描述：该模块是微信图文编辑工具中好友互动的活动控件，商家推出部分商品，通过摇奖送礼的方式在微信好友之间进行传播，实现为商家公众号和商品的推广。\r\n- 用Spring-data作数据的访问框架，主要使用命名查询规范业务的CRUD操作。\r\n使用Quartz框架定时对过期且已支付的订单进行部分微信退款操作\r\n采用Velocity模板解析并进行视图展示。\r\n\r\n##### 政府机关某管理系统\r\n软件环境：Windows、Mysql、Tomcat\r\n技术实现：Mybatis、SpringMVC、Activiti、WebSocket\r\n项目描述：政府项目，对政府对应机关提供的职务犯罪数据进行管理和分析，方便对外提供犯罪记录的查询和犯罪趋势的预测。\r\n- 使用Mysql保存从其它服务器同步过来的数据，mybatis作为数据访问框架，使用Ativiti对业务操作进行流程控制，利用WebSocket针对重要消息进行实时推送，利用shiro对用户和菜单进行权限管理。\r\n\r\n# ...\r\n\r\n---\r\n\r\n## 技能\r\n- 熟练掌握chrome对前端的各方面进行调试和排错。\r\n- 熟悉掌握常见的WEB后端开发知识。\r\n- 熟悉对Spring-boot，SpringMVC，Spring-data，mybatis，Activiti等框架的运用。\r\n- 熟悉MYSQL、Mongodb等数据库操作。\r\n- 熟练掌握Git和Maven在项目中的使用 。\r\n- 熟悉Linux常用命令。\r\n\r\n## 自我评价\r\n- 对IT领域的软件开发有浓厚的兴趣\r\n- 能够快速的适应各种工作环境，具有良好的自学能力，适应能力\r\n- 喜欢通过stackOverflow、github、开源中国等网站学习新的知识\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
