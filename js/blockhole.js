@@ -1,221 +1,11 @@
 !function (a, b) {
+    // debugger ;
     if (typeof define == "function" && define.amd) {
         define(b)
     } else {
         this[a] = b()
     }
 }("blackhole", function () {
-    (function () {
-        var O = 0;
-        var P = ["ms", "moz", "webkit", "o"];
-        for (var N = 0; N < P.length && !window.requestAnimationFrame; ++N) {
-            window.requestAnimationFrame = window[P[N] + "RequestAnimationFrame"];
-            window.cancelAnimationFrame = window[P[N] + "CancelAnimationFrame"] || window[P[N] + "CancelRequestAnimationFrame"]
-        }
-        if (!window.requestAnimationFrame) {
-            window.requestAnimationFrame = function (U, R) {
-                var Q = new Date().getTime();
-                var S = Math.max(0, 16 - (Q - O));
-                var T = window.setTimeout(function () {
-                    U(Q + S)
-                }, S);
-                O = Q + S;
-                return T
-            }
-        }
-        if (!window.cancelAnimationFrame) {
-            window.cancelAnimationFrame = function (Q) {
-                clearTimeout(Q)
-            }
-        }
-    }());
-    var x = (function () {
-        var N = true;
-
-        function O(Z) {
-            function V(ab) {
-                var ac = Z.match(ab);
-                return (ac && ac.length > 1 && ac[1]) || ""
-            }
-
-            var R = V(/(ipod|iphone|ipad)/i).toLowerCase(), S = /like android/i.test(Z), X = !S && /android/i.test(Z), aa = V(/version\/(\d+(\.\d+)?)/i), T = /tablet/i.test(Z), Y = !T && /[^-]mobi/i.test(Z), Q;
-            if (/opera|opr/i.test(Z)) {
-                Q = {name: "Opera", opera: N, version: aa || V(/(?:opera|opr)[\s\/](\d+(\.\d+)?)/i)}
-            } else {
-                if (/windows phone/i.test(Z)) {
-                    Q = {name: "Windows Phone", windowsphone: N, msie: N, version: V(/iemobile\/(\d+(\.\d+)?)/i)}
-                } else {
-                    if (/msie|trident/i.test(Z)) {
-                        Q = {name: "Internet Explorer", msie: N, version: V(/(?:msie |rv:)(\d+(\.\d+)?)/i)}
-                    } else {
-                        if (/chrome|crios|crmo/i.test(Z)) {
-                            Q = {name: "Chrome", chrome: N, version: V(/(?:chrome|crios|crmo)\/(\d+(\.\d+)?)/i)}
-                        } else {
-                            if (R) {
-                                Q = {name: R == "iphone" ? "iPhone" : R == "ipad" ? "iPad" : "iPod"};
-                                if (aa) {
-                                    Q.version = aa
-                                }
-                            } else {
-                                if (/sailfish/i.test(Z)) {
-                                    Q = {
-                                        name: "Sailfish",
-                                        sailfish: N,
-                                        version: V(/sailfish\s?browser\/(\d+(\.\d+)?)/i)
-                                    }
-                                } else {
-                                    if (/seamonkey\//i.test(Z)) {
-                                        Q = {name: "SeaMonkey", seamonkey: N, version: V(/seamonkey\/(\d+(\.\d+)?)/i)}
-                                    } else {
-                                        if (/firefox|iceweasel/i.test(Z)) {
-                                            Q = {
-                                                name: "Firefox",
-                                                firefox: N,
-                                                version: V(/(?:firefox|iceweasel)[ \/](\d+(\.\d+)?)/i)
-                                            };
-                                            if (/\((mobile|tablet);[^\)]*rv:[\d\.]+\)/i.test(Z)) {
-                                                Q.firefoxos = N
-                                            }
-                                        } else {
-                                            if (/silk/i.test(Z)) {
-                                                Q = {name: "Amazon Silk", silk: N, version: V(/silk\/(\d+(\.\d+)?)/i)}
-                                            } else {
-                                                if (X) {
-                                                    Q = {name: "Android", version: aa}
-                                                } else {
-                                                    if (/phantom/i.test(Z)) {
-                                                        Q = {
-                                                            name: "PhantomJS",
-                                                            phantom: N,
-                                                            version: V(/phantomjs\/(\d+(\.\d+)?)/i)
-                                                        }
-                                                    } else {
-                                                        if (/blackberry|\bbb\d+/i.test(Z) || /rim\stablet/i.test(Z)) {
-                                                            Q = {
-                                                                name: "BlackBerry",
-                                                                blackberry: N,
-                                                                version: aa || V(/blackberry[\d]+\/(\d+(\.\d+)?)/i)
-                                                            }
-                                                        } else {
-                                                            if (/(web|hpw)os/i.test(Z)) {
-                                                                Q = {
-                                                                    name: "WebOS",
-                                                                    webos: N,
-                                                                    version: aa || V(/w(?:eb)?osbrowser\/(\d+(\.\d+)?)/i)
-                                                                };
-                                                                /touchpad\//i.test(Z) && (Q.touchpad = N)
-                                                            } else {
-                                                                if (/bada/i.test(Z)) {
-                                                                    Q = {
-                                                                        name: "Bada",
-                                                                        bada: N,
-                                                                        version: V(/dolfin\/(\d+(\.\d+)?)/i)
-                                                                    }
-                                                                } else {
-                                                                    if (/tizen/i.test(Z)) {
-                                                                        Q = {
-                                                                            name: "Tizen",
-                                                                            tizen: N,
-                                                                            version: V(/(?:tizen\s?)?browser\/(\d+(\.\d+)?)/i) || aa
-                                                                        }
-                                                                    } else {
-                                                                        if (/safari/i.test(Z)) {
-                                                                            Q = {name: "Safari", safari: N, version: aa}
-                                                                        } else {
-                                                                            Q = {}
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if (/(apple)?webkit/i.test(Z)) {
-                Q.name = Q.name || "Webkit";
-                Q.webkit = N;
-                if (!Q.version && aa) {
-                    Q.version = aa
-                }
-            } else {
-                if (!Q.opera && /gecko\//i.test(Z)) {
-                    Q.name = Q.name || "Gecko";
-                    Q.gecko = N;
-                    Q.version = Q.version || V(/gecko\/(\d+(\.\d+)?)/i)
-                }
-            }
-            if (X || Q.silk) {
-                Q.android = N
-            } else {
-                if (R) {
-                    Q[R] = N;
-                    Q.ios = N
-                }
-            }
-            var W = "";
-            if (R) {
-                W = V(/os (\d+([_\s]\d+)*) like mac os x/i);
-                W = W.replace(/[_\s]/g, ".")
-            } else {
-                if (X) {
-                    W = V(/android[ \/-](\d+(\.\d+)*)/i)
-                } else {
-                    if (Q.windowsphone) {
-                        W = V(/windows phone (?:os)?\s?(\d+(\.\d+)*)/i)
-                    } else {
-                        if (Q.webos) {
-                            W = V(/(?:web|hpw)os\/(\d+(\.\d+)*)/i)
-                        } else {
-                            if (Q.blackberry) {
-                                W = V(/rim\stablet\sos\s(\d+(\.\d+)*)/i)
-                            } else {
-                                if (Q.bada) {
-                                    W = V(/bada\/(\d+(\.\d+)*)/i)
-                                } else {
-                                    if (Q.tizen) {
-                                        W = V(/tizen[\/\s](\d+(\.\d+)*)/i)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if (W) {
-                Q.osversion = W
-            }
-            var U = W.split(".")[0];
-            if (T || R == "ipad" || (X && (U == 3 || (U == 4 && !Y))) || Q.silk) {
-                Q.tablet = N
-            } else {
-                if (Y || R == "iphone" || R == "ipod" || X || Q.blackberry || Q.webos || Q.bada) {
-                    Q.mobile = N
-                }
-            }
-            if ((Q.msie && Q.version >= 10) || (Q.chrome && Q.version >= 20) || (Q.firefox && Q.version >= 20) || (Q.safari && Q.version >= 6) || (Q.opera && Q.version >= 10) || (Q.ios && Q.osversion && Q.osversion.split(".")[0] >= 6) || (Q.blackberry && Q.version >= 10.1)) {
-                Q.a = N
-            } else {
-                if ((Q.msie && Q.version < 10) || (Q.chrome && Q.version < 20) || (Q.firefox && Q.version < 20) || (Q.safari && Q.version < 6) || (Q.opera && Q.version < 10) || (Q.ios && Q.osversion && Q.osversion.split(".")[0] < 6)) {
-                    Q.c = N
-                } else {
-                    Q.x = N
-                }
-            }
-            return Q
-        }
-
-        var P = O(typeof navigator !== "undefined" ? navigator.userAgent : "");
-        P._detect = O;
-        return P
-    })();
     var C = 302;
     var K = 303;
     var s = (function () {
@@ -223,7 +13,7 @@
         var N;
         var W;
 
-        function O(Z) {
+        function O(Z) {// s.start调用此方法 ，传入的参数是Q() ，其实就是k.refer（） ;
             N = Z;
             R = true;
             W = requestAnimationFrame(T)
@@ -419,6 +209,7 @@
     var k;
 
     function b(P, R) {
+        // debugger ;
         var N = P + $(document).scrollLeft();
         var S = R + $(document).scrollTop();
         k = new s.ParticleSystem();
@@ -514,6 +305,7 @@
     var f = 500;
 
     function L(N, O) {
+        // 显示黑洞图片
         $(".ops-close").fadeIn();
         $(".ops-blackhole").css({width: 0, height: 0, left: N, top: O}).show().animate({
             width: f,
@@ -587,9 +379,10 @@
     }
 
     function I() {
-        if (x.msie && x.version <= 9) {
-            return
-        }
+        // 入口？？
+        // if (x.msie && x.version <= 9) {
+        //     return
+        // }
         y();
         M();
         A([l, m]).done(function (N) {
@@ -608,5 +401,6 @@
     }
 
     var H = {init: I, dispose: u};
+    window.H_ = H ;
     return H
 });
