@@ -198,89 +198,66 @@ jQuery(document).ready(function($) {
 
 
     /*----------------------------------------------------*/
-    /*  Owl Carousel
-     /*----------------------------------------------------*/
-
-
-    $(document).ready(function() {
-
-        $("#testimonial-slides").owlCarousel({
-
-            navigation : false, // Show next and prev buttons
-            slideSpeed : 300,
-            paginationSpeed : 400,
-            singleItem:true
-
-            // "singleItem:true" is a shortcut for:
-            // items : 1,
-            // itemsDesktop : false,
-            // itemsDesktopSmall : false,
-            // itemsTablet: false,
-            // itemsMobile : false
-
-        });
-
-    });
-
-
-    /*----------------------------------------------------*/
-    /*  Google Map
+    /*	3D Tag
      ------------------------------------------------------*/
+    $('.burning').burn();
+    var entries = [
+        { label: 'java', url: '#', target: '_top' },
+        { label: 'Bootstrap', url: '#', target: '_top' },
+        { label: 'SpringMVC', url: '#', target: '_top' },
+        { label: 'Spring-Boot', url: '#', target: '_top' },
+        { label: 'Mybatis', url: '#', target: '_top' },
+        { label: 'Oracle', url: '#', target: '_top' },
+        { label: 'MySql', url: '#', target: '_top' },
+        { label: 'HTML', url: '#', target: '_top' },
+        { label: 'CSS', url: '#', target: '_top' },
+        { label: 'Activiti', url: '#', target: '_top' },
+        { label: 'Velocity', url: '#', target: '_top' },
+        { label: 'Spring', url: '#', target: '_top' },
+        { label: 'WebSocket', url: '#', target: '_top' },
+        { label: 'QuarZ', url: '#', target: '_top' },
+        { label: 'MongoDB', url: '#', target: '_top' },
+        { label: 'jQuery', url: '#', target: '_top' },
+        { label: 'Ajax', url: '#', target: '_top' },
+        { label: 'Git', url: 'https://github.com/', target: '_top' },
+        { label: 'Tomcat', url: '#', target: '_top' },
+        { label: 'Maven', url: '#', target: '_top' },
+        { label: 'Spring-data', url: '#', target: '_top' },
+        { label: 'Freemarker', url: '#', target: '_top' },
+        { label: 'JavaScript', url: '#', target: '_top' },
+        { label: 'Bootstrap', url: '#', target: '_top' },
+        { label: 'Junit', url: '#', target: '_top' },
+        { label: 'Intellij', url: '#', target: '_top' },
+        { label: 'Linux', url: '#', target: '_top' },
+        { label: 'JSP', url: '#', target: '_top' }
+    ];
 
-    // main directions
-    // map = new GMaps({
-    //     el: '#map', lat: 23.790223, lng: 90.414036, zoom: 13, zoomControl : true,
-    //     zoomControlOpt: { style : 'SMALL', position: 'TOP_LEFT' }, panControl : false, scrollwheel: false
-    // });
-    // add address markers
-    // map.addMarker({ lat: 23.790223, lng: 90.414036, title: 'BD InfoSys',
-    //     infoWindow: { content: '<p>Building # 2, Plot # 111, Road # 35, Gulshan - 2, Dhaka</p>' } });
+    var settings = {
 
-    /*----------------------------------------------------*/
-    /*	contact form
-     ------------------------------------------------------*/
+        entries: entries,
+        width: $('#map').width(),
+        height: $('#map').height(),
+        radius: '65%',
+        radiusMin: 75,
+        bgDraw: true,
+        bgColor: 'none',
+        opacityOver: 1.00,
+        opacityOut: 0.05,
+        opacitySpeed: 6,
+        fov: 800,
+        speed: 0.5,
+        fontFamily: 'Consolas',
+        fontSize: '20',
+        fontColor: '#fff',
+        fontWeight: 'normal',//bold
+        fontStyle: 'normal',//italic
+        fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
+        fontToUpperCase: false
 
-    $('form#contactForm button.submit').click(function() {
+    };
 
-        return false;
-        $('#image-loader').fadeIn();
-
-        var contactName = $('#contactForm #contactName').val();
-        var contactEmail = $('#contactForm #contactEmail').val();
-        var contactSubject = $('#contactForm #contactSubject').val();
-        var contactMessage = $('#contactForm #contactMessage').val();
-
-        var data = 'contactName=' + contactName + '&contactEmail=' + contactEmail +
-            '&contactSubject=' + contactSubject + '&contactMessage=' + contactMessage;
-
-        // $.ajax({
-        //
-        //     type: "POST",
-        //     url: "inc/sendEmail.php",
-        //     data: data,
-        //     success: function(msg) {
-        //
-        //         // Message was sent
-        //         if (msg == 'OK') {
-        //             $('#image-loader').fadeOut();
-        //             $('#message-warning').hide();
-        //             $('#contactForm').fadeOut();
-        //             $('#message-success').fadeIn();
-        //         }
-        //         // There was an error
-        //         else {
-        //             $('#image-loader').fadeOut();
-        //             $('#message-warning').html(msg);
-        //             $('#message-warning').fadeIn();
-        //         }
-        //
-        //     }
-        //
-        // });
-        return false;
-    });
-
-
+    //var svg3DTagCloud = new SVG3DTagCloud( document.getElementById( 'holder'  ), settings );
+    $( '#tag-cloud' ).svg3DTagCloud( settings );
 });
 
 
