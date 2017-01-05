@@ -77,4 +77,4 @@
 
 ## 其它
 - [个人博客](http://www.jianshu.com/users/ff555476bc0b/latest_articles)
-- [简历主页](https://resume.veslay.com)
+- [简历主页](http://resume.veslay.com)
