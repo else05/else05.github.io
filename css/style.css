@@ -874,7 +874,7 @@ body.show-menu #left-nav {
 
 .java {
     background: #1abc9c;
-    width: 62%;
+    width: 45%;
     -moz-animation: java 2s ease;
     -webkit-animation: java 2s ease;
 }
@@ -886,7 +886,7 @@ body.show-menu #left-nav {
 }
 .database {
     background: #34495e;
-    width: 53%;
+    width: 30%;
     -moz-animation: database 2s ease;
     -webkit-animation: database 2s ease;
 }
@@ -898,7 +898,13 @@ body.show-menu #left-nav {
 }
 .html5 {
     background: #d35400;
-    width: 52%;
+    width: 36%;
+    -moz-animation: html5 2s ease;
+    -webkit-animation: html5 2s ease;
+}
+.linux {
+    background: #d35400;
+    width: 32%;
     -moz-animation: html5 2s ease;
     -webkit-animation: html5 2s ease;
 }
